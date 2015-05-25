@@ -1,0 +1,14 @@
+/* TEAM */
+Developer: Randy Uebel.
+Contact: randy.uebel [at] gmail [dot] com
+Location: Nashville, TN
+
+/* THANKS */
+Name: Mark French Barrett, Shane Dickson
+
+/* SITE */
+Site Name: Hunted Horse
+URL: www.huntedhorse.com
+Last update: 2015/05/25
+Language: English
+Software: WebStorm, Sublime, Paint.NET

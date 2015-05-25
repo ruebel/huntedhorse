@@ -1,0 +1,76 @@
+body,
+html,
+main {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #a3a5a4;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 100%;
+}
+a {
+  color: #a3a5a4;
+}
+.hh-title {
+  height: 100%;
+  margin: 0 10px 0 10px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 200px;
+  padding-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.hh-title img {
+  width: 80%;
+  heigt: auto;
+  opacity: 0.75;
+}
+.hh-title .main-title {
+  max-width: 800px;
+}
+.hh-title .album-title {
+  max-width: 900px;
+  padding-left: 4px;
+  margin-top: 15px;
+}
+.hh-title .spotify-player {
+  width: 100%;
+  min-width: 300px;
+  max-width: 1000px;
+  height: auto;
+  background: rgba(5, 4, 2, 0.7);
+  padding-bottom: 25px;
+  text-align: center;
+}
+.band-img {
+  width: 100%;
+  heigt: auto;
+}
+.row {
+  align-self: center;
+  width: auto;
+  text-align: center;
+}
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  opacity: 1;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
