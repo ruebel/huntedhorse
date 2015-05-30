@@ -56,12 +56,20 @@ a {
   width: auto;
   text-align: center;
 }
-@media (max-width: 650px) {
+.large-player {
+  width: 300px;
+  height: 380px;
+}
+.small-player {
+  width: 250px;
+  height: 80px;
+}
+@media (max-width: 533px) {
   .large-player {
     display: none;
   }
 }
-@media (min-width: 650px) {
+@media (min-width: 533px) {
   .small-player {
     display: none;
   }
