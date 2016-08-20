@@ -1,0 +1,41 @@
+.hh-header {
+    position: fixed;
+    top: -@headerHeight;
+    left: 0;
+    width: 100%;
+    height: @headerHeight;
+    color: lighten(@darkBG, 10);
+    background: fade(@lightFG, 60%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    transition: top 0.2s ease-in;
+    :after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    &.visible {
+        top: 0;
+    }
+    #hh-logo {
+        float: left;
+        margin: 13px 0 0 5%;
+    }
+    #hh-logo img {
+        display: block;
+    }
+    .header-cont {
+        text-align: center;
+        line-height: @headerHeight;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+@media only screen and (min-width: @screenMd) {
+    .hh-header {
+        height: @headerHeight;
+    }
+    .hh-header #hh-logo {
+        margin: 23px 0 0 5%;
+    }
+}

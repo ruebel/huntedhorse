@@ -1,0 +1,93 @@
+@import '_variables';
+body,
+html,
+main {
+    height: 100%;
+}
+body {
+    margin: 0;
+    background: @lightFG;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 100%;
+}
+a {
+    color: @lightFG;
+}
+.hh-title {
+    height: 100%;
+    margin: 0 10px;
+    display: flex;
+    padding-top: 200px;
+    padding-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 80%;
+        height: auto;
+        opacity: 0.75;
+        &.main {
+          max-width: 780px;
+          content: url('../img/800/hh_title.png');
+        }
+        &.ebos {
+          content: url('../img/800/ebos_title.png');
+          @media only screen and (min-width: @screenMd) {
+              content: url("../img/ebos_title.png");
+          }
+        }
+        &.msiads {
+          content: url('../img/800/shadow_title.png');
+          @media only screen and (min-width: @screenMd) {
+              content: url("../img/shadow_title.png");
+          }
+        }
+    }
+    .main-title {
+        max-width: 800px;
+    }
+    .album-title {
+        max-width: 900px;
+        padding-left: 4px;
+        margin-top: 15px;
+    }
+    .spotify-player {
+        width: 100%;
+        min-width: 300px;
+        max-width: 1000px;
+        height: auto;
+        background: fade(@darkBG, 70%);
+        padding-bottom: 25px;
+        text-align: center;
+
+        @media only screen and (max-width: @screenSm) {
+          height: 130px;
+        }
+    }
+}
+.band-img {
+    width: 100%;
+    heigt: auto;
+}
+.row {
+    align-self: center;
+    width: auto;
+    text-align: center;
+}
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    opacity: 1;
+    embed,
+    iframe,
+    object {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

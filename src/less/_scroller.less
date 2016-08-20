@@ -1,0 +1,178 @@
+@import '_variables';
+/* --------------------------------
+Modules
+-------------------------------- */
+.hh-container {
+    /* this class is used to give a max-width to the element it is applied to,
+    and center it horizontally when it reaches that max-width */
+    width: 90%;
+    max-width: 768px;
+    margin: 0 auto;
+}
+.hh-container::after {
+    /* clearfix */
+    content: '';
+    display: table;
+    clear: both;
+}
+/* --------------------------------
+Main components
+-------------------------------- */
+.hh-main-nav {
+    float: right;
+    margin-right: 5%;
+    width: 44px;
+    height: 100%;
+    background-size: 44px 44px;
+    cursor: pointer;
+}
+.hh-main-nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%);
+}
+.hh-main-nav ul.is-visible {
+    transform: translateY(50px);
+}
+.hh-main-nav a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 5%;
+    background: #2f292a;
+    border-top: 1px solid #453c3d;
+    color: #8e7d7f;
+}
+@media only screen and (min-width: @screenMd) {
+    .hh-main-nav {
+        width: auto;
+        height: auto;
+        background: none;
+        cursor: auto;
+    }
+    .hh-main-nav ul {
+        position: static;
+        width: auto;
+        transform: translateY(0);
+        line-height: 70px;
+    }
+    .hh-main-nav ul.is-visible {
+        transform: translateY(0);
+    }
+    .hh-main-nav li {
+        display: inline-block;
+        margin-left: 1em;
+    }
+    .hh-main-nav a {
+        display: inline-block;
+        height: auto;
+        line-height: normal;
+        background: transparent;
+        padding: 0.6em 1em;
+        border-top: none;
+        color: #3d3536;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 14px;
+        font-size: 0.875rem;
+    }
+    .no-touch .hh-main-nav a:hover {
+        color: #99a478;
+    }
+}
+.hh-main-content {
+    /* you need to assign a min-height to the main content so that the children can inherit it*/
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.hh-fixed-bg {
+    position: relative;
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 1;
+}
+.hh-fixed-bg h1,
+.hh-fixed-bg h2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%);
+    width: 90%;
+    max-width: 1170px;
+    text-align: center;
+    font-size: 30px;
+    font-size: 1.875rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    color: @lightFG;
+}
+.hh-fixed-bg.hh-bg-1 {
+    background-image: url("../img/800/MSIADS.jpg");
+    @media only screen and (min-width: @screenMd) {
+        background-image: url("../img/MSIADS.jpg");
+    }
+}
+.hh-fixed-bg.hh-bg-2 {
+    background-image: url("../img/800/ebos_wide.jpg");
+    @media only screen and (min-width: @screenMd) {
+        background-image: url("../img/ebos_wide.jpg");
+    }
+}
+.hh-fixed-bg.hh-bg-3 {
+    background-image: url("../img/800/tree_square.jpg");
+    // filter: invert(100%);
+    // filter: grayscale(80%);
+    // animation: animImage 5s;
+    @media only screen and (min-width: @screenMd) {
+        background-image: url("../img/tree_wide.jpg");
+    }
+}
+
+// @keyframes animImage{
+//   // 25% { filter: blur(0.5px) }
+//   50% { filter: grayscale 0%) }
+//   // 75% { filter: blur(0.5px) }
+// }
+@media only screen and (min-width: @screenMd) {
+    .hh-fixed-bg h1,
+    .hh-fixed-bg h2 {
+        font-size: 36px;
+    }
+}
+@media only screen and (min-width: @screenLg) {
+    .hh-fixed-bg {
+        background-attachment: fixed;
+    }
+    .hh-fixed-bg h1,
+    .hh-fixed-bg h2 {
+        font-size: 48px;
+        font-weight: 300;
+    }
+}
+.hh-scrolling-bg {
+    position: relative;
+    min-height: 75%;
+    padding: 4em 0;
+    line-height: 1.6;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+.hh-scrolling-bg.hh-color-1 {
+    background-color: @darkBG;
+    color: @lightFG;
+}
+@media only screen and (min-width: @screenMd) {
+    .hh-scrolling-bg {
+        padding: 8em 0;
+        font-size: 20px;
+        font-size: 1.25rem;
+        line-height: 2;
+        font-weight: 300;
+    }
+}
