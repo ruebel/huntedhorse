@@ -1,17 +1,36 @@
 (function() {
-  window.onscroll = function(e) {
-    var doc = document.documentElement;
-    var scrollPos = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    let header = document.getElementById('header');
+  function getEl(id) {
+    return document.getElementById(id) || document.all.getElementById(id);
+  }
+
+  function handleScroll(e) {
+    let doc = document.documentElement;
+    let scrollPos = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    let header = getEl('header');
     if (scrollPos > (0.8 * window.innerHeight)) {
       addClass(header, 'visible');
     } else {
       removeClass(header, 'visible');
     }
-    // grayscale image
-    var perc = Math.min(1, scrollPos / window.innerHeight) * 175 + '%';
-    var tree = document.getElementById('tree');
-    tree.style.webkitFilter = 'grayscale(' + perc + ')';
+    let winHeight = window.innerHeight;
+    let tree = getEl('tree');
+    let ebos = getEl('ebos');
+    let msiads = getEl('msiads');
+    filterImage(tree, scrollPos, winHeight);
+    filterImage(ebos, scrollPos, winHeight);
+    filterImage(msiads, scrollPos, winHeight);
+  }
+
+  function filterImage(el, scrollPos, winHeight) {
+    if (!el) {
+      return;
+    }
+    let top = el.getBoundingClientRect().top;
+    if (Math.abs(top) < winHeight) {
+      let perc = Math.min(1, Math.abs(top / winHeight) * 1.5) * 100 + '%';
+      el.style.webkitFilter = `grayscale(${perc})`;
+      // el.style.filter = 'grayscale(' + perc + ')';
+    }
   }
 
   function hasClass(el, className) {
@@ -44,15 +63,16 @@
       el.classList.remove(className);
     }
     else if (hasClass(el, className)) {
-      var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+      let reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
       el.className = el.className.replace(reg, ' ');
     }
   }
 
   function stopLoader() {
-    let loader = document.getElementById('loader');
+    let loader = getEl('loader');
     addClass(loader, 'hidden');
   }
 
   window.onload = stopLoader;
+  window.onscroll = handleScroll;
 })();
