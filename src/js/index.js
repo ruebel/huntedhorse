@@ -26,11 +26,13 @@
       return;
     }
     let top = el.getBoundingClientRect().top;
-    if (Math.abs(top) < winHeight) {
-      let perc = Math.min(1, Math.abs(top / winHeight) * 1.5) * 100 + '%';
-      el.style.webkitFilter = `grayscale(${perc})`;
-      // el.style.filter = 'grayscale(' + perc + ')';
-    }
+    // if (Math.abs(top) < winHeight) {
+      let val = Math.min(1, Math.abs(top / winHeight) * 1.5);
+      let perc = val * 100 + '%';
+      // el.style.webkitFilter = `grayscale(${perc}) hue-rotate(${val*100}deg)`;
+      // el.style.webkitFilter = `invert(${Math.max(0, Math.min(100, val*1000-750))}%)`;
+      el.style.webkitFilter = `grayscale(${perc}) brightness(${Math.max(0, Math.min(1, (1.5-1.2*val)))})`;
+    // }
   }
 
   function hasClass(el, className) {

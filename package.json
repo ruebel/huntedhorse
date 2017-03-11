@@ -34,6 +34,8 @@
   "private": true,
   "scripts": {
     "build": "gulp build",
+    "deploy": "cd build && git add --all && git commit -m \"Release: $(date)\" && git push",
+    "deploy:clean": "rm -rf build && git clone https://github.com/ruebel/huntedhorse --branch gh-pages build && npm run build && npm run deploy",
     "start": "gulp"
   }
 }
