@@ -6,36 +6,47 @@
     "name": "Randy Uebel",
     "email": "randy.uebel@gmail.com"
   },
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": ["last 2 versions"]
+          }
+        }
+      ],
+      "react",
+      "stage-2"
+    ],
+    "plugins": [
+      [
+        "styled-components",
+        {
+          "displayName": false,
+          "preprocess": false
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "gsandf-react",
+    "parser": "babel-eslint"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ruebel/huntedhorse"
   },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.13.2",
-    "browser-sync": "^2.14.0",
-    "glob": "*",
-    "gulp": "*",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-cache": "^0.4.5",
-    "gulp-concat": "*",
-    "gulp-image-resize": "^0.10.0",
-    "gulp-imagemin": "^3.0.3",
-    "gulp-less": "^3.0.1",
-    "gulp-load-plugins": "^1.2.4",
-    "gulp-minify-css": "^1.0.0",
-    "gulp-pipes": "^0.1.6",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^2.0.0",
-    "imagemin-webp": "^4.0.0",
-    "less": "*"
-  },
-  "main": "server.js",
+  "devDependencies": {},
+  "main": "docs/index.js",
   "private": true,
   "scripts": {
-    "build": "gulp build",
-    "deploy": "cd build && git add --all && git commit -m \"Release: $(date)\" && git push",
-    "deploy:clean": "rm -rf build && git clone https://github.com/ruebel/huntedhorse --branch gh-pages build && npm run build && npm run deploy",
-    "start": "gulp"
+    "start": "react-scripts start",
+    "prebuild": "rm -rf ./docs",
+    "build": "react-scripts build",
+    "postbuild": "mv ./build ./docs",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
