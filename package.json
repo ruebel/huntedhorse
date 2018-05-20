@@ -13,7 +13,9 @@
         "env",
         {
           "targets": {
-            "browsers": ["last 2 versions"]
+            "browsers": [
+              "last 2 versions"
+            ]
           }
         }
       ],
@@ -38,7 +40,15 @@
     "type": "git",
     "url": "https://github.com/ruebel/huntedhorse"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint-config-gsandf-react": "^1.0.2",
+    "eslint-watch": "^3.1.4"
+  },
   "main": "docs/index.js",
   "private": true,
   "scripts": {
@@ -48,5 +58,12 @@
     "postbuild": "mv ./build ./docs",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "^1.1.4",
+    "react-spring": "^5.1.10",
+    "styled-components": "^3.2.6"
   }
 }
