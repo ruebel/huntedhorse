@@ -1,52 +1,23 @@
 import React from 'react';
 import { Spring, animated } from 'react-spring';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import paths from '../data/hh';
+import Title from './Title';
 
-const grow = keyframes`
-  0% {
-    transform: scale(0.9);
-  },
-  50% {
-    transform: scale(1);
-  },
-  100% {
-    transform: scale(0.1);
-  }
-`;
-
-const Title = styled.div`
-  color: white;
-  font-family: 'Righteous';
-  font-size: 147px;
-  letter-spacing: 20px;
-  mix-blend-mode: darken;
-  text-align: right;
-
-  @media (max-width: 600px) {
-    font-size: 70px;
-    mix-blend-mode: exclusion;
-  }
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 0;
-  width: 80%;
-
-  @media (max-width: 600px) {
-    width: 90%;
+const Path = styled(animated.path)`
+  transition: fill-opacity, transform 200ms ease-in-out;
+  &:hover {
+    fill-opacity: 1;
+    transform: rotate(2deg);
   }
 `;
 
 const Wrapper = styled.div`
   align-items: center;
   flex: 1;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 `;
 
 class App extends React.Component {
@@ -54,11 +25,16 @@ class App extends React.Component {
     path: 0
   };
 
+  timer = null;
+
   componentDidMount() {
-    setInterval(this.next, 4000);
+    this.setupTimer();
   }
 
-  next = () => {
+  next = fromClick => {
+    if (fromClick) {
+      this.setupTimer();
+    }
     this.setState(state => {
       const next = state.path + 1;
       return {
@@ -67,14 +43,19 @@ class App extends React.Component {
     });
   };
 
+  setupTimer = () => {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+    this.timer = setInterval(this.next, 4000);
+  };
+
   render() {
     const selected =
       this.state.path != null ? paths[this.state.path] : { image: [] };
     return (
       <Wrapper>
-        <TitleWrapper>
-          <Title>{selected.title || 'Hunted Horse'}</Title>
-        </TitleWrapper>
+        <Title>{selected.title}</Title>
         <svg onClick={this.next} viewBox="0 0 400 256" height="100vh">
           {selected.image.map((p, i) => (
             <Spring
@@ -84,7 +65,7 @@ class App extends React.Component {
               to={p}
             >
               {t => (
-                <animated.path
+                <Path
                   d={t.d}
                   fill={t.fill}
                   fillOpacity={t.fillOpacity || 0.501961}
