@@ -1,16 +1,10 @@
 import React from 'react';
-import { Spring, animated } from 'react-spring';
 import styled from 'styled-components';
-import paths from '../data/hh';
-import Title from './Title';
+import slides from '../data/hh';
 
-const Path = styled(animated.path)`
-  transition: fill-opacity, transform 200ms ease-in-out;
-  &:hover {
-    fill-opacity: 1;
-    transform: rotate(2deg);
-  }
-`;
+import Info from './Info';
+import Player from './Player';
+import Svg from './Svg';
 
 const Wrapper = styled.div`
   align-items: center;
@@ -20,60 +14,76 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const clientId = 'ca1f6b04464964bb9ed82eaa129f5cc7';
+const resolveUrl =
+  'https://soundcloud.com/user-981664689/sets/every-burned-out-sky';
+
 class App extends React.Component {
   state = {
-    path: 0
+    index: 3,
+    showPlayer: false
   };
 
   timer = null;
 
   componentDidMount() {
-    this.setupTimer();
+    // this.setupTimer();
   }
+
+  handleCtaClick = () => {
+    this.setState(
+      state => ({
+        showPlayer: !state.showPlayer
+      }),
+      () => {
+        if (this.state.showPlayer) {
+          this.stopTimer();
+        }
+      }
+    );
+  };
 
   next = fromClick => {
     if (fromClick) {
       this.setupTimer();
     }
     this.setState(state => {
-      const next = state.path + 1;
+      const next = state.index + 1;
       return {
-        path: paths.length === next ? 0 : next
+        index: slides.length === next ? 0 : next
       };
     });
   };
 
   setupTimer = () => {
-    if (this.timer) {
-      clearInterval(this.timer);
-    }
+    this.stopTimer();
     this.timer = setInterval(this.next, 4000);
   };
 
+  stopTimer = () => {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  };
+
   render() {
-    const selected =
-      this.state.path != null ? paths[this.state.path] : { image: [] };
+    const { index, showPlayer } = this.state;
+    const selected = slides[index];
     return (
       <Wrapper>
-        <Title>{selected.title}</Title>
-        <svg onClick={this.next} viewBox="0 0 400 256" height="100vh">
-          {selected.image.map((p, i) => (
-            <Spring
-              key={i}
-              from={{ d: 'M91,59 116,79 26,78Z', fill: '#e1e4d8' }}
-              native
-              to={p}
-            >
-              {t => (
-                <Path
-                  d={t.d}
-                  fill={t.fill}
-                  fillOpacity={t.fillOpacity || 0.501961}
-                />
-              )}
-            </Spring>
-          ))}
-        </svg>
+        <Info
+          cta={selected.cta}
+          onCtaClick={this.handleCtaClick}
+          title={selected.title}
+        />
+        {showPlayer && (
+          <Player
+            clientId={clientId}
+            onClose={this.handleCtaClick}
+            resolveUrl={resolveUrl}
+          />
+        )}
+        <Svg onClick={this.next} path={selected.image} />
       </Wrapper>
     );
   }

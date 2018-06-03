@@ -1,4 +1,5 @@
 export default {
+  cta: 'Listen',
   image: [
     {
       d: 'M194,0L-78,88L369,139Z',
@@ -826,5 +827,8 @@ export default {
       fillOpacity: '0.41'
     }
   ],
-  title: 'Every Burned Out Sky'
+  link:
+    'https://open.spotify.com/album/4DCqcRa9yNxh4Jz0oBtnYH?si=uG-VZBm0REerNJDxwn97Pg',
+  title: 'Every Burned Out Sky',
+  uri: 'spotify:album:4DCqcRa9yNxh4Jz0oBtnYH'
 };

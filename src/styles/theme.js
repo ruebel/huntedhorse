@@ -1,7 +1,7 @@
 export const color = {
-  primary: '#6dbdff',
-  secondary: '#000',
-  tertiary: '#ccc'
+  active: '#51B6C3',
+  primary: '#fff',
+  secondary: '#000'
 };
 
 export const deviceWidth = {
@@ -11,7 +11,12 @@ export const deviceWidth = {
   tablet: '800px'
 };
 
+export const font = {
+  primary: 'Righteous, Helvetica'
+};
+
 export default {
   color,
-  deviceWidth
+  deviceWidth,
+  font
 };

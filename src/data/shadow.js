@@ -1,4 +1,5 @@
 export default {
+  cta: 'Listen',
   image: [
     {
       d: 'M183,153L184,227L232,178Z',
@@ -950,5 +951,8 @@ export default {
       fillOpacity: '0.69'
     }
   ],
-  title: 'My Shadow Is A Different Shape'
+  link:
+    'https://open.spotify.com/album/1D8NUO4foVINB5DpVbTL4I?si=0pEfQJ_pQFScCdd4R9WBsg',
+  title: 'My Shadow Is A Different Shape',
+  uri: 'spotify:album:1D8NUO4foVINB5DpVbTL4I'
 };
