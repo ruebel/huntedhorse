@@ -11,10 +11,10 @@ const Wrapper = styled.div`
   justify-content: space-around;
   letter-spacing: 2px;
   margin-left: 20px;
-  width: 50%;
+  width: 100%;
 `;
 
-const Playlist = ({ index, onClick, tracks }) => {
+const Playlist = ({ index, onClick, progress, tracks }) => {
   return (
     <Wrapper>
       {tracks.map((track, i) => (
@@ -23,6 +23,7 @@ const Playlist = ({ index, onClick, tracks }) => {
           key={i}
           index={i}
           onClick={onClick}
+          progress={progress}
           track={track}
         />
       ))}
@@ -33,6 +34,7 @@ const Playlist = ({ index, onClick, tracks }) => {
 Playlist.propTypes = {
   index: PropTypes.number,
   onClick: PropTypes.func.isRequired,
+  progress: PropTypes.number,
   tracks: PropTypes.array
 };
 

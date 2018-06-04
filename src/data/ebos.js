@@ -830,5 +830,5 @@ export default {
   link:
     'https://open.spotify.com/album/4DCqcRa9yNxh4Jz0oBtnYH?si=uG-VZBm0REerNJDxwn97Pg',
   title: 'Every Burned Out Sky',
-  uri: 'spotify:album:4DCqcRa9yNxh4Jz0oBtnYH'
+  uri: 'https://soundcloud.com/user-981664689/sets/every-burned-out-sky'
 };

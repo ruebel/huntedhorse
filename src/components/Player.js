@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PlayButton, Timer } from 'react-soundplayer/components';
 import { withSoundCloudAudio } from 'react-soundplayer/addons';
 
 import Playlist from './Playlist';
@@ -12,6 +11,11 @@ const Close = styled.div`
   color: ${p => p.theme.color.primary};
   cursor: pointer;
   font-size: 30px;
+
+  &:hover {
+    color: ${p => p.theme.color.active};
+    text-decoration: line-through;
+  }
 `;
 
 const Wrapper = RightPane.extend`
@@ -27,18 +31,32 @@ const Wrapper = RightPane.extend`
 
 class Player extends React.Component {
   static propTypes = {
-    currentTime: PropTypes.number,
     onClose: PropTypes.func.isRequired,
     playlist: PropTypes.object,
     soundCloudAudio: PropTypes.object
   };
 
   state = {
-    index: -1
+    index: -1,
+    progress: 0
   };
 
   componentDidMount() {
     setTimeout(() => console.log(this.props), 1000);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.playlist) {
+      const progress = nextProps.currentTime / nextProps.duration;
+      if (progress !== prevState.progress) {
+        return {
+          progress
+        };
+      }
+    } else {
+      return prevState;
+    }
+    return { progress: 0 };
   }
 
   playTrack = index => {
@@ -56,10 +74,10 @@ class Player extends React.Component {
           <Playlist
             index={this.state.index}
             onClick={this.playTrack}
+            progress={this.state.progress}
             tracks={playlist.tracks}
           />
         )}
-        {/* <Timer duration={track ? track.duration / 1000 : 0} {...this.props} /> */}
       </Wrapper>
     );
   }

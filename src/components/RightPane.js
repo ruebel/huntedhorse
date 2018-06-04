@@ -6,6 +6,8 @@ export default styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  max-width: 700px;
+  opacity: ${p => (p.light ? 0.2 : 1)};
   pointer-events: none;
   position: absolute;
   right: 0;

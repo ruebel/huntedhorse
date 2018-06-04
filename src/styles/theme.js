@@ -8,7 +8,8 @@ export const deviceWidth = {
   desktop: '1000px',
   largePhone: '600px',
   phone: '450px',
-  tablet: '800px'
+  tablet: '800px',
+  wideDesktop: '1200px'
 };
 
 export const font = {

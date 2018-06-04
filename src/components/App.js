@@ -15,19 +15,17 @@ const Wrapper = styled.div`
 `;
 
 const clientId = 'ca1f6b04464964bb9ed82eaa129f5cc7';
-const resolveUrl =
-  'https://soundcloud.com/user-981664689/sets/every-burned-out-sky';
 
 class App extends React.Component {
   state = {
-    index: 3,
+    index: 4,
     showPlayer: false
   };
 
   timer = null;
 
   componentDidMount() {
-    // this.setupTimer();
+    this.setupTimer();
   }
 
   handleCtaClick = () => {
@@ -38,6 +36,8 @@ class App extends React.Component {
       () => {
         if (this.state.showPlayer) {
           this.stopTimer();
+        } else {
+          setTimeout(() => this.next(true), 1000);
         }
       }
     );
@@ -67,23 +67,24 @@ class App extends React.Component {
   };
 
   render() {
-    const { index, showPlayer } = this.state;
+    const { index, progress, showPlayer } = this.state;
     const selected = slides[index];
     return (
       <Wrapper>
         <Info
           cta={selected.cta}
           onCtaClick={this.handleCtaClick}
+          playing={showPlayer}
           title={selected.title}
         />
         {showPlayer && (
           <Player
             clientId={clientId}
             onClose={this.handleCtaClick}
-            resolveUrl={resolveUrl}
+            resolveUrl={selected.uri}
           />
         )}
-        <Svg onClick={this.next} path={selected.image} />
+        <Svg onClick={this.next} path={selected.image} progress={progress} />
       </Wrapper>
     );
   }

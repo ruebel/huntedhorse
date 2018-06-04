@@ -954,5 +954,6 @@ export default {
   link:
     'https://open.spotify.com/album/1D8NUO4foVINB5DpVbTL4I?si=0pEfQJ_pQFScCdd4R9WBsg',
   title: 'My Shadow Is A Different Shape',
-  uri: 'spotify:album:1D8NUO4foVINB5DpVbTL4I'
+  uri:
+    'https://soundcloud.com/user-981664689/sets/my-shadow-is-a-different-shape'
 };
