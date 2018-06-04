@@ -18,7 +18,7 @@ const clientId = 'ca1f6b04464964bb9ed82eaa129f5cc7';
 
 class App extends React.Component {
   state = {
-    index: 4,
+    index: 0,
     showPlayer: false
   };
 
