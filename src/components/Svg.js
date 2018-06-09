@@ -11,6 +11,10 @@ const Path = styled(animated.path)`
   }
 `;
 
+const Wrapper = styled.svg`
+  height: 100vh;
+`;
+
 class Svg extends React.Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
@@ -25,9 +29,11 @@ class Svg extends React.Component {
     const { onClick, path } = this.props;
 
     return (
-      <svg onClick={onClick} viewBox="0 0 400 256" height="100vh">
+      <Wrapper onClick={onClick} viewBox="0 0 400 256" height="100vh">
         {path.map((p, i) => (
           <Spring
+            config={{ friction: 18, tension: 30 }}
+            delay={2000}
             key={i}
             from={{ d: 'M91,59 116,79 26,78Z', fill: '#e1e4d8' }}
             native
@@ -42,7 +48,7 @@ class Svg extends React.Component {
             )}
           </Spring>
         ))}
-      </svg>
+      </Wrapper>
     );
   }
 }

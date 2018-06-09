@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export default styled.div`
   color: ${p => p.theme.color.primary};
   font-family: ${p => p.theme.font.primary};
-  font-size: 147px;
+  font-size: 120px;
   letter-spacing: 20px;
-  mix-blend-mode: darken;
+  mix-blend-mode: lighten;
   opacity: ${p => (p.light ? 0.1 : 1)};
   text-align: right;
 

@@ -7,7 +7,7 @@ export default styled.div`
   font-size: 25px;
   letter-spacing: 20px;
   line-height: 60px;
-  mix-blend-mode: darken;
+  mix-blend-mode: lighten;
   pointer-events: auto;
   text-align: right;
   text-decoration: underline;

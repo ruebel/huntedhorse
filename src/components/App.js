@@ -71,6 +71,7 @@ class App extends React.Component {
     const selected = slides[index];
     return (
       <Wrapper>
+        <Svg onClick={this.next} path={selected.image} progress={progress} />
         <Info
           cta={selected.cta}
           onCtaClick={this.handleCtaClick}
@@ -84,7 +85,6 @@ class App extends React.Component {
             resolveUrl={selected.uri}
           />
         )}
-        <Svg onClick={this.next} path={selected.image} progress={progress} />
       </Wrapper>
     );
   }

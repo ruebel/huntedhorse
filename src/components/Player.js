@@ -1,21 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { withSoundCloudAudio } from 'react-soundplayer/addons';
 
 import Playlist from './Playlist';
 import RightPane from './RightPane';
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const spin = css`
+  animation: ${rotate} 200ms linear infinite;
+`;
+
 const Close = styled.div`
   align-self: center;
   color: ${p => p.theme.color.primary};
   cursor: pointer;
-  font-size: 30px;
+  font-size: 80px;
+  position: absolute;
+  right: -10px;
+  top: 49%;
 
   &:hover {
     color: ${p => p.theme.color.active};
     text-decoration: line-through;
   }
+
+  @media (max-width: ${p => p.theme.deviceWidth.largePhone}) {
+    right: 5px;
+    top: 5px;
+  }
+
+  ${p => p.pending && spin};
 `;
 
 const Wrapper = RightPane.extend`
@@ -69,7 +93,6 @@ class Player extends React.Component {
     const { onClose, playlist } = this.props;
     return (
       <Wrapper>
-        <Close onClick={onClose}>X</Close>
         {playlist && (
           <Playlist
             index={this.state.index}
@@ -78,6 +101,9 @@ class Player extends React.Component {
             tracks={playlist.tracks}
           />
         )}
+        <Close pending={!playlist} onClick={onClose}>
+          X
+        </Close>
       </Wrapper>
     );
   }

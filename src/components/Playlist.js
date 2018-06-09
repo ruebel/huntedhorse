@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Trail } from 'react-spring';
 
+import AnimatedTrack from './AnimatedTrack';
 import Track from './Track';
 
 const Wrapper = styled.div`
@@ -11,22 +13,35 @@ const Wrapper = styled.div`
   justify-content: space-around;
   letter-spacing: 2px;
   margin-left: 20px;
-  width: 100%;
+  width: 75%;
+
+  @media (max-width: ${p => p.theme.deviceWidth.largePhone}) {
+    width: 100%;
+  }
 `;
 
 const Playlist = ({ index, onClick, progress, tracks }) => {
   return (
     <Wrapper>
-      {tracks.map((track, i) => (
-        <Track
-          activeIndex={index}
-          key={i}
-          index={i}
-          onClick={onClick}
-          progress={progress}
-          track={track}
-        />
-      ))}
+      <Trail
+        config={{ friction: 20, tension: 400 }}
+        from={{ opacity: 0, x: -100 }}
+        native
+        to={{ opacity: 1, x: 0 }}
+        keys={tracks.map((track, i) => i)}
+      >
+        {tracks.map((track, i) => styles => (
+          <AnimatedTrack {...styles}>
+            <Track
+              activeIndex={index}
+              index={i}
+              onClick={onClick}
+              progress={progress}
+              track={track}
+            />
+          </AnimatedTrack>
+        ))}
+      </Trail>
     </Wrapper>
   );
 };
