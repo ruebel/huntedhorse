@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { Spring, animated } from 'react-spring';
 import styled from 'styled-components';
 
+const defaultOpacity = 0.501961;
+
 const Path = styled(animated.path)`
   transition: fill-opacity, transform 200ms ease-in-out;
+
   &:hover {
     fill-opacity: 1;
     transform: rotate(2deg);
@@ -33,8 +36,8 @@ class Svg extends React.Component {
         {path.map((p, i) => (
           <Spring
             config={{ friction: 18, tension: 30 }}
-            delay={2000}
             key={i}
+            // initial path to animate from
             from={{ d: 'M91,59 116,79 26,78Z', fill: '#e1e4d8' }}
             native
             to={p}
@@ -43,7 +46,7 @@ class Svg extends React.Component {
               <Path
                 d={t.d}
                 fill={t.fill}
-                fillOpacity={t.fillOpacity || 0.501961}
+                fillOpacity={t.fillOpacity || defaultOpacity}
               />
             )}
           </Spring>

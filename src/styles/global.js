@@ -8,13 +8,13 @@ injectGlobal`
     height: 100vh;
   }
   body {
-    padding: 0;
-    margin: 0;
-    font-size: 12px;
-    min-height: 100vh;
-    width: 100%;
-    font-family: sans-serif;
     background-color: ${color.secondary};
+    font-family: sans-serif;
+    font-size: 12px;
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+    width: 100%;
   }
   *,
   *::before,

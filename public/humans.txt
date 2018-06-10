@@ -1,7 +1,6 @@
 /* TEAM */
-Developer: Randy Uebel.
+Developer: Randy Uebel
 Contact: randy.uebel [at] gmail [dot] com
-Location: Nashville, TN
 
 /* THANKS */
 Name: Mark French Barrett, Shane Dickson

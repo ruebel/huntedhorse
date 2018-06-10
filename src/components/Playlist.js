@@ -26,9 +26,9 @@ const Playlist = ({ index, onClick, progress, tracks }) => {
       <Trail
         config={{ friction: 20, tension: 400 }}
         from={{ opacity: 0, x: -100 }}
+        keys={tracks.map((track, i) => i)}
         native
         to={{ opacity: 1, x: 0 }}
-        keys={tracks.map((track, i) => i)}
       >
         {tracks.map((track, i) => styles => (
           <AnimatedTrack {...styles}>
