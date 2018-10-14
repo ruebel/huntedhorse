@@ -47,6 +47,20 @@ class App extends React.Component {
     );
   };
 
+  handleKey = event => {
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case 'Enter':
+      case ' ':
+        return this.next(true);
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        return this.prev(true);
+      default:
+    }
+  };
+
   next = resetTimer => {
     if (resetTimer) {
       this.setupTimer();
@@ -56,6 +70,19 @@ class App extends React.Component {
       const next = state.index + 1;
       return {
         index: slides.length === next ? 0 : next
+      };
+    });
+  };
+
+  prev = resetTimer => {
+    if (resetTimer) {
+      this.setupTimer();
+    }
+    this.setState(state => {
+      // Go to next (or loop back around to end)
+      const next = state.index - 1;
+      return {
+        index: next < 0 ? slides.length - 1 : next
       };
     });
   };
@@ -79,9 +106,10 @@ class App extends React.Component {
     // get the current slide
     const currentSlide = slides[index];
     return (
-      <Wrapper>
+      <Wrapper onKeyDown={this.handleKey} tabIndex="0">
         <Svg
           onClick={this.next}
+          onKeyDown={this.handleKey}
           path={currentSlide.image}
           progress={progress}
         />

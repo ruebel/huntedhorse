@@ -65,10 +65,6 @@ class Player extends React.Component {
     progress: 0
   };
 
-  componentDidMount() {
-    setTimeout(() => console.log(this.props), 1000);
-  }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.playlist) {
       const progress = nextProps.currentTime / nextProps.duration;
