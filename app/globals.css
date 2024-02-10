@@ -1,0 +1,47 @@
+:root {
+  --font: Righteous, Helvetica, ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --active: #51b6c3;
+  --primary: #fff;
+  --secondary: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --active: #51b6c3;
+    --primary: #fff;
+    --secondary: #000;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--primary);
+  background: var(--secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
