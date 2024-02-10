@@ -4,8 +4,9 @@
 
 ## tech
 
-* react
-* styled-components
+- react
+- nextjs
+- typescript
 
 ## license
 
