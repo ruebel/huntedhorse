@@ -11,7 +11,7 @@ export const defaultSlide: Slide = {
   image: Array.from({ length: 209 }, (_, i) => ({
     d: "M88,167L57,161L57,174Z",
     fill: "rgb(255, 255, 255)",
-    fillOpacity: "0",
+    fillOpacity: "0.5",
   })),
   title: "Hunted Horse",
 };
