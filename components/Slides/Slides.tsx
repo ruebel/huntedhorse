@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { slides } from "@/data";
-import { Info } from "@/components/Info/Info";
 import { Graphic } from "@/components/Graphic/Graphic";
+import { Info } from "@/components/Info/Info";
+import { defaultSlide, slides } from "@/data";
+import { useEffect, useState } from "react";
 
 export function Slides() {
-  const [index, setIndex] = useState(0);
-  const slide = slides[index];
+  const [index, setIndex] = useState(-1);
+  const slide = index === -1 ? defaultSlide : slides[index];
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -30,11 +30,15 @@ export function Slides() {
   }, [index]);
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setIndex((index + 1) % slides.length),
-      4000
-    );
-    return () => clearInterval(interval);
+    // Starter shape so just advance to the first slide
+    if (index === -1) {
+      setIndex(0);
+      return;
+    }
+
+    // Advance to the next slide every 4 seconds
+    const timer = setTimeout(() => setIndex((index + 1) % slides.length), 4000);
+    return () => clearTimeout(timer);
   }, [index]);
 
   return (
